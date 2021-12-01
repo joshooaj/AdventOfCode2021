@@ -72,7 +72,8 @@ $day1Data = Get-Content -Path "$PSScriptRoot/day01.txt"
 $answer1 = $day1Data | Get-AoCDay1Q1Answer
 $answer2 = $day1Data | Get-AoCDay1Q2Answer
 [pscustomobject]@{
-    'Day'    = 1
+    'Day'    = [io.fileinfo]::new($MyInvocation.InvocationName).BaseName
     'Part 1' = $answer1
     'Part 2' = $answer2
 }
+$MyInvocation.ScriptName
