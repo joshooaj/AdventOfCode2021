@@ -88,6 +88,17 @@ function Get-AoCDay2Q2Answer {
 }
 
 
-$data = Get-Content -Path $PSScriptRoot/day02.txt | ConvertTo-DivePlan
-$data | Get-AoCDay2Q1Answer
-$data | Get-AoCDay2Q2Answer
+$data = Get-Content -Path "$PSScriptRoot/data/day02.txt" | ConvertTo-DivePlan
+$testData = Get-Content -Path "$PSScriptRoot/data/day02-sample.txt" | ConvertTo-DivePlan
+$part1Test = $testData | Get-AoCDay2Q1Answer
+$part1 = $data | Get-AoCDay2Q1Answer
+$part2Test = $testData | Get-AoCDay2Q2Answer
+$part2 = $data | Get-AoCDay2Q2Answer
+
+[pscustomobject]@{
+    'Day'    = 2
+    'Part 1 Test' = $part1Test.Product
+    'Part 1' = $part1.Product
+    'Part 2 Test' = $part2Test.Product
+    'Part 2' = $part2.Product
+}

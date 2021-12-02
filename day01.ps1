@@ -68,12 +68,17 @@ function Get-AoCDay1Q2Answer {
     }
 }
 
-$day1Data = Get-Content -Path "$PSScriptRoot/day01.txt"
+$day1Data = Get-Content -Path "$PSScriptRoot/data/day01.txt"
+$sampleData = Get-Content -Path "$PSScriptRoot/data/day01-sample.txt"
+$answer1Test = $sampleData | Get-AoCDay1Q1Answer
 $answer1 = $day1Data | Get-AoCDay1Q1Answer
+$answer2Test = $sampleData | Get-AoCDay1Q2Answer
 $answer2 = $day1Data | Get-AoCDay1Q2Answer
+
 [pscustomobject]@{
-    'Day'    = [io.fileinfo]::new($MyInvocation.InvocationName).BaseName
+    'Day'    = 1
+    'Part 1 Test' = $answer1Test
     'Part 1' = $answer1
+    'Part 2 Test' = $answer2Test
     'Part 2' = $answer2
 }
-$MyInvocation.ScriptName
